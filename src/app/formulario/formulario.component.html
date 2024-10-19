@@ -1,0 +1,50 @@
+<div class="section">
+  <form action="">
+    <div class="row">
+      <div class="col s12 m4">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="Nombre" [ngModel]="mensaje.nombre" required
+                 name="nombre" #nombre="ngModel">
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors?.['required']">
+            El nombre es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <mat-form-field appearance="fill">
+          <mat-label>Correo</mat-label>
+          <input type="email" matInput name="correo" [ngModel]="mensaje.correo" placeholder="Correo"
+                 required #correo="ngModel">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+          <div *ngIf="correo.errors?.['required']">
+            Debe indicar un correo electrónico
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <mat-form-field appearance="fill">
+          <mat-label>Asunto</mat-label>
+          <textarea cols="4" rows="3" matInput name="mensaje" [ngModel]="mensaje.asunto"
+                    placeholder="Asunto" required #asunto="ngModel"></textarea>
+          <mat-icon matSuffix>subject</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="alert alert-danger" *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)">
+        <div *ngIf="asunto.errors?.['required']">
+          Debe llevar un mensaje
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button mat-button mat-raised-button class="mat-primary" type="submit">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
